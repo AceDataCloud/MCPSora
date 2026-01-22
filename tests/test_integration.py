@@ -1,6 +1,6 @@
 """Integration tests for Sora API.
 
-These tests require a valid ACEDATA_API_TOKEN to run.
+These tests require a valid ACEDATACLOUD_API_TOKEN to run.
 Run with: pytest tests/test_integration.py -m integration
 """
 

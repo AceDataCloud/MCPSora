@@ -28,8 +28,8 @@ class TestSettings:
     def test_settings_from_env(self):
         """Test settings loaded from environment variables."""
         env_vars = {
-            "ACEDATA_API_TOKEN": "test-token",
-            "ACEDATA_API_BASE_URL": "https://custom.api.com",
+            "ACEDATACLOUD_API_TOKEN": "test-token",
+            "ACEDATACLOUD_API_BASE_URL": "https://custom.api.com",
             "SORA_DEFAULT_MODEL": "sora-2-pro",
             "SORA_DEFAULT_SIZE": "small",
             "SORA_DEFAULT_DURATION": "25",
@@ -54,7 +54,7 @@ class TestSettings:
 
     def test_is_configured(self):
         """Test is_configured property."""
-        with patch.dict(os.environ, {"ACEDATA_API_TOKEN": "test-token"}, clear=True):
+        with patch.dict(os.environ, {"ACEDATACLOUD_API_TOKEN": "test-token"}, clear=True):
             from core.config import Settings
 
             settings = Settings()
@@ -70,5 +70,5 @@ class TestSettings:
             from core.config import Settings
 
             settings = Settings()
-            with pytest.raises(ValueError, match="ACEDATA_API_TOKEN"):
+            with pytest.raises(ValueError, match="ACEDATACLOUD_API_TOKEN"):
                 settings.validate()

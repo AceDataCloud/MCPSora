@@ -59,7 +59,7 @@ Examples:
   mcp-sora --version          # Show version
 
 Environment Variables:
-  ACEDATA_API_TOKEN          API token from AceDataCloud (required)
+  ACEDATACLOUD_API_TOKEN     API token from AceDataCloud (required)
   SORA_DEFAULT_MODEL         Default model (default: sora-2)
   SORA_DEFAULT_SIZE          Default video size (default: large)
   SORA_DEFAULT_DURATION      Default duration in seconds (default: 15)
@@ -104,7 +104,7 @@ Environment Variables:
 
     # Validate configuration
     if not settings.is_configured:
-        safe_print("  [ERROR] ACEDATA_API_TOKEN not configured!")
+        safe_print("  [ERROR] ACEDATACLOUD_API_TOKEN not configured!")
         safe_print("  Get your token from https://platform.acedata.cloud")
         safe_print("")
         sys.exit(1)
