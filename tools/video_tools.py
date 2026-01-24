@@ -313,13 +313,4 @@ async def sora_generate_video_async(
         payload["image_urls"] = image_urls
 
     result = await client.generate_video(**payload)
-
-    # For async requests, the response only contains task_id
-    task_id = result.get("task_id", "N/A")
-    return f"""Video generation started!
-
-Task ID: {task_id}
-
-The result will be sent to your callback URL when generation is complete.
-You can also check the status using sora_get_task with this task_id.
-"""
+    return format_video_result(result)
