@@ -22,14 +22,10 @@ class Settings:
     api_token: str = field(default_factory=lambda: os.getenv("ACEDATACLOUD_API_TOKEN", ""))
 
     # Default Model
-    default_model: str = field(
-        default_factory=lambda: os.getenv("SORA_DEFAULT_MODEL", "sora-2")
-    )
+    default_model: str = field(default_factory=lambda: os.getenv("SORA_DEFAULT_MODEL", "sora-2"))
 
     # Default Video Settings
-    default_size: str = field(
-        default_factory=lambda: os.getenv("SORA_DEFAULT_SIZE", "large")
-    )
+    default_size: str = field(default_factory=lambda: os.getenv("SORA_DEFAULT_SIZE", "large"))
     default_duration: int = field(
         default_factory=lambda: int(os.getenv("SORA_DEFAULT_DURATION", "15"))
     )
