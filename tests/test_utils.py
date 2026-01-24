@@ -1,5 +1,7 @@
 """Unit tests for utility functions."""
 
+import json
+
 from core.utils import (
     format_batch_task_result,
     format_task_result,
@@ -13,24 +15,28 @@ class TestFormatVideoResult:
     def test_format_success(self, mock_video_response):
         """Test formatting successful video response."""
         result = format_video_result(mock_video_response)
-        assert "Task ID: test-task-123" in result
-        assert "Trace ID: test-trace-456" in result
-        assert "Video 1" in result
-        assert "succeeded" in result
-        assert "https://example.com/test-video.mp4" in result
+        data = json.loads(result)
+        assert data["success"] is True
+        assert data["task_id"] == "test-task-123"
+        assert data["trace_id"] == "test-trace-456"
+        assert len(data["data"]) == 1
+        assert data["data"][0]["state"] == "succeeded"
+        assert "video_url" in data["data"][0]
 
     def test_format_error(self, mock_error_response):
         """Test formatting error response."""
         result = format_video_result(mock_error_response)
-        assert "Error: invalid_request" in result
-        assert "Invalid parameters" in result
+        data = json.loads(result)
+        assert data["success"] is False
+        assert data["error"]["code"] == "invalid_request"
 
     def test_format_empty_data(self):
         """Test formatting response with no video data."""
         response = {"success": True, "task_id": "123", "data": []}
         result = format_video_result(response)
-        assert "Task ID: 123" in result
-        assert "Video" not in result
+        data = json.loads(result)
+        assert data["task_id"] == "123"
+        assert data["data"] == []
 
 
 class TestFormatTaskResult:
@@ -39,18 +45,17 @@ class TestFormatTaskResult:
     def test_format_success(self, mock_task_response):
         """Test formatting successful task response."""
         result = format_task_result(mock_task_response)
-        assert "Task ID: test-task-123" in result
-        assert "Model: sora-2" in result
-        assert "Size: large" in result
-        assert "Duration: 15s" in result
-        assert "Orientation: landscape" in result
-        assert "Response: Success" in result
+        data = json.loads(result)
+        assert data["id"] == "test-task-123"
+        assert data["request"]["model"] == "sora-2"
+        assert data["response"]["success"] is True
 
     def test_format_error(self):
         """Test formatting error response."""
         error_response = {"error": {"code": "not_found", "message": "Task not found"}}
         result = format_task_result(error_response)
-        assert "Error: not_found" in result
+        data = json.loads(result)
+        assert data["error"]["code"] == "not_found"
 
 
 class TestFormatBatchTaskResult:
@@ -59,12 +64,14 @@ class TestFormatBatchTaskResult:
     def test_format_success(self, mock_batch_task_response):
         """Test formatting successful batch task response."""
         result = format_batch_task_result(mock_batch_task_response)
-        assert "Total Tasks: 1" in result
-        assert "Task: test-task-123" in result
-        assert "Success: True" in result
+        data = json.loads(result)
+        assert data["count"] == 1
+        assert len(data["items"]) == 1
+        assert data["items"][0]["id"] == "test-task-123"
 
     def test_format_error(self):
         """Test formatting error response."""
         error_response = {"error": {"code": "not_found", "message": "Tasks not found"}}
         result = format_batch_task_result(error_response)
-        assert "Error: not_found" in result
+        data = json.loads(result)
+        assert data["error"]["code"] == "not_found"
