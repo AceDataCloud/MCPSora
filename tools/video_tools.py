@@ -98,9 +98,7 @@ async def sora_generate_video_from_image(
     ],
     model: Annotated[
         SoraModel,
-        Field(
-            description="Sora model version. 'sora-2' or 'sora-2-pro' for higher quality."
-        ),
+        Field(description="Sora model version. 'sora-2' or 'sora-2-pro' for higher quality."),
     ] = DEFAULT_MODEL,
     size: Annotated[
         VideoSize,
@@ -116,9 +114,7 @@ async def sora_generate_video_from_image(
     ] = DEFAULT_DURATION,
     orientation: Annotated[
         VideoOrientation,
-        Field(
-            description="Video orientation. 'landscape', 'portrait', or 'square'."
-        ),
+        Field(description="Video orientation. 'landscape', 'portrait', or 'square'."),
     ] = DEFAULT_ORIENTATION,
 ) -> str:
     """Generate an AI video from reference images using Sora (Image-to-Video).
@@ -177,9 +173,7 @@ async def sora_generate_video_with_character(
     ] = 1,
     model: Annotated[
         SoraModel,
-        Field(
-            description="Sora model version. 'sora-2' or 'sora-2-pro' for higher quality."
-        ),
+        Field(description="Sora model version. 'sora-2' or 'sora-2-pro' for higher quality."),
     ] = DEFAULT_MODEL,
     size: Annotated[
         VideoSize,
@@ -195,9 +189,7 @@ async def sora_generate_video_with_character(
     ] = DEFAULT_DURATION,
     orientation: Annotated[
         VideoOrientation,
-        Field(
-            description="Video orientation. 'landscape', 'portrait', or 'square'."
-        ),
+        Field(description="Video orientation. 'landscape', 'portrait', or 'square'."),
     ] = DEFAULT_ORIENTATION,
 ) -> str:
     """Generate an AI video featuring a character from a reference video.
@@ -238,9 +230,7 @@ async def sora_generate_video_with_character(
 async def sora_generate_video_async(
     prompt: Annotated[
         str,
-        Field(
-            description="Description of the video to generate."
-        ),
+        Field(description="Description of the video to generate."),
     ],
     callback_url: Annotated[
         str,
@@ -250,33 +240,23 @@ async def sora_generate_video_async(
     ],
     model: Annotated[
         SoraModel,
-        Field(
-            description="Sora model version."
-        ),
+        Field(description="Sora model version."),
     ] = DEFAULT_MODEL,
     size: Annotated[
         VideoSize,
-        Field(
-            description="Video resolution."
-        ),
+        Field(description="Video resolution."),
     ] = DEFAULT_SIZE,
     duration: Annotated[
         VideoDuration,
-        Field(
-            description="Video duration in seconds."
-        ),
+        Field(description="Video duration in seconds."),
     ] = DEFAULT_DURATION,
     orientation: Annotated[
         VideoOrientation,
-        Field(
-            description="Video orientation."
-        ),
+        Field(description="Video orientation."),
     ] = DEFAULT_ORIENTATION,
     image_urls: Annotated[
         list[str] | None,
-        Field(
-            description="Optional list of reference image URLs for image-to-video generation."
-        ),
+        Field(description="Optional list of reference image URLs for image-to-video generation."),
     ] = None,
 ) -> str:
     """Generate an AI video asynchronously with callback notification.
