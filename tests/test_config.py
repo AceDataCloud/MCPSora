@@ -20,7 +20,7 @@ class TestSettings:
             assert settings.default_size == "large"
             assert settings.default_duration == 15
             assert settings.default_orientation == "landscape"
-            assert settings.request_timeout == 300
+            assert settings.request_timeout == 3600
             assert settings.server_name == "sora"
             assert settings.transport == "stdio"
             assert settings.log_level == "INFO"

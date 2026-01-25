@@ -186,7 +186,7 @@ Claude: I'll create a new scene with the robot character.
 | `SORA_DEFAULT_SIZE` | Default video size | `large` |
 | `SORA_DEFAULT_DURATION` | Default duration (seconds) | `15` |
 | `SORA_DEFAULT_ORIENTATION` | Default orientation | `landscape` |
-| `SORA_REQUEST_TIMEOUT` | Request timeout (seconds) | `300` |
+| `SORA_REQUEST_TIMEOUT` | Request timeout (seconds) | `3600` |
 | `LOG_LEVEL` | Logging level | `INFO` |
 
 ### Command Line Options

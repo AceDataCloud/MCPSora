@@ -39,7 +39,7 @@ class Settings:
 
     # Request Configuration
     request_timeout: float = field(
-        default_factory=lambda: float(os.getenv("SORA_REQUEST_TIMEOUT", "300"))
+        default_factory=lambda: float(os.getenv("SORA_REQUEST_TIMEOUT", "3600"))
     )
 
     # Server Configuration

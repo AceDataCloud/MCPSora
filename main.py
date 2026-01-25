@@ -64,7 +64,7 @@ Environment Variables:
   SORA_DEFAULT_SIZE          Default video size (default: large)
   SORA_DEFAULT_DURATION      Default duration in seconds (default: 15)
   SORA_DEFAULT_ORIENTATION   Default orientation (default: landscape)
-  SORA_REQUEST_TIMEOUT       Request timeout in seconds (default: 300)
+  SORA_REQUEST_TIMEOUT       Request timeout in seconds (default: 3600)
   LOG_LEVEL                  Logging level (default: INFO)
         """,
     )
