@@ -23,7 +23,7 @@ spec:
     spec:
       containers:
         - name: mcp-sora
-          image: ghcr.io/acedatacloud/mcp-sora:latest
+          image: ghcr.io/acedatacloud/mcp-sora:${TAG}
           ports:
             - containerPort: 8000
               protocol: TCP
