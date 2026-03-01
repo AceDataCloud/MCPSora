@@ -15,7 +15,7 @@ VideoSize = Literal["small", "large"]
 VideoDuration = Literal[10, 15, 25]
 
 # Video orientation options
-VideoOrientation = Literal["landscape", "portrait", "square"]
+VideoOrientation = Literal["landscape", "portrait"]
 
 # Default model
 DEFAULT_MODEL: SoraModel = "sora-2"
