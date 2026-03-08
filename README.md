@@ -161,25 +161,25 @@ Clients connect with their own Bearer token — the server extracts the token fr
 
 ### Video Generation
 
-| Tool | Description |
-|------|-------------|
-| `sora_generate_video` | Generate video from a text prompt |
-| `sora_generate_video_from_image` | Generate video from reference images |
+| Tool                                 | Description                                          |
+| ------------------------------------ | ---------------------------------------------------- |
+| `sora_generate_video`                | Generate video from a text prompt                    |
+| `sora_generate_video_from_image`     | Generate video from reference images                 |
 | `sora_generate_video_with_character` | Generate video with a character from reference video |
-| `sora_generate_video_async` | Generate video with callback notification |
+| `sora_generate_video_async`          | Generate video with callback notification            |
 
 ### Tasks
 
-| Tool | Description |
-|------|-------------|
-| `sora_get_task` | Query a single task status |
+| Tool                   | Description                  |
+| ---------------------- | ---------------------------- |
+| `sora_get_task`        | Query a single task status   |
 | `sora_get_tasks_batch` | Query multiple tasks at once |
 
 ### Information
 
-| Tool | Description |
-|------|-------------|
-| `sora_list_models` | List available Sora models |
+| Tool                | Description                |
+| ------------------- | -------------------------- |
+| `sora_list_models`  | List available Sora models |
 | `sora_list_actions` | List available API actions |
 
 ## Usage Examples
@@ -213,23 +213,26 @@ Claude: I'll create a new scene with the robot character.
 
 ## Available Models
 
-| Model | Max Duration | Quality | Features |
-|-------|--------------|---------|----------|
-| `sora-2` | 15 seconds | Good | Standard generation |
-| `sora-2-pro` | 25 seconds | Best | Higher quality, longer videos |
+| Model        | Max Duration | Quality | Features                      |
+| ------------ | ------------ | ------- | ----------------------------- |
+| `sora-2`     | 15 seconds   | Good    | Standard generation           |
+| `sora-2-pro` | 25 seconds   | Best    | Higher quality, longer videos |
 
 ### Video Options
 
 **Size:**
+
 - `small` - Lower resolution, faster generation
 - `large` - Higher resolution (recommended)
 
 **Orientation:**
+
 - `landscape` - 16:9 (YouTube, presentations)
 - `portrait` - 9:16 (TikTok, Instagram Stories)
 - `square` - 1:1 (Instagram posts)
 
 **Duration:**
+
 - `10` seconds - All models
 - `15` seconds - All models
 - `25` seconds - sora-2-pro only
@@ -238,16 +241,16 @@ Claude: I'll create a new scene with the robot character.
 
 ### Environment Variables
 
-| Variable | Description | Default |
-|----------|-------------|---------|
-| `ACEDATACLOUD_API_TOKEN` | API token from AceDataCloud | **Required** |
-| `ACEDATACLOUD_API_BASE_URL` | API base URL | `https://api.acedata.cloud` |
-| `SORA_DEFAULT_MODEL` | Default model | `sora-2` |
-| `SORA_DEFAULT_SIZE` | Default video size | `large` |
-| `SORA_DEFAULT_DURATION` | Default duration (seconds) | `15` |
-| `SORA_DEFAULT_ORIENTATION` | Default orientation | `landscape` |
-| `SORA_REQUEST_TIMEOUT` | Request timeout (seconds) | `3600` |
-| `LOG_LEVEL` | Logging level | `INFO` |
+| Variable                    | Description                 | Default                     |
+| --------------------------- | --------------------------- | --------------------------- |
+| `ACEDATACLOUD_API_TOKEN`    | API token from AceDataCloud | **Required**                |
+| `ACEDATACLOUD_API_BASE_URL` | API base URL                | `https://api.acedata.cloud` |
+| `SORA_DEFAULT_MODEL`        | Default model               | `sora-2`                    |
+| `SORA_DEFAULT_SIZE`         | Default video size          | `large`                     |
+| `SORA_DEFAULT_DURATION`     | Default duration (seconds)  | `15`                        |
+| `SORA_DEFAULT_ORIENTATION`  | Default orientation         | `landscape`                 |
+| `SORA_REQUEST_TIMEOUT`      | Request timeout (seconds)   | `3600`                      |
+| `LOG_LEVEL`                 | Logging level               | `INFO`                      |
 
 ### Command Line Options
 
