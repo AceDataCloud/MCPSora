@@ -10,10 +10,14 @@ from core.types import (
     DEFAULT_DURATION,
     DEFAULT_MODEL,
     DEFAULT_ORIENTATION,
+    DEFAULT_RESOLUTION,
+    DEFAULT_SECONDS,
     DEFAULT_SIZE,
     SoraModel,
     VideoDuration,
     VideoOrientation,
+    VideoResolution,
+    VideoSeconds,
     VideoSize,
 )
 from core.utils import format_video_result
@@ -287,6 +291,130 @@ async def sora_generate_video_async(
         "size": size,
         "duration": duration,
         "orientation": orientation,
+    }
+
+    if image_urls:
+        payload["image_urls"] = image_urls
+
+    result = await client.generate_video(**payload)
+    return format_video_result(result)
+
+
+# === Version 2 Tools ===
+
+
+@mcp.tool()
+async def sora_generate_video_v2(
+    prompt: Annotated[
+        str,
+        Field(
+            description="Description of the video to generate. Be descriptive about the scene, action, style, and mood."
+        ),
+    ],
+    model: Annotated[
+        SoraModel,
+        Field(
+            description="Sora model version. 'sora-2' is standard, 'sora-2-pro' offers higher quality."
+        ),
+    ] = DEFAULT_MODEL,
+    duration: Annotated[
+        VideoSeconds,
+        Field(description="Video duration in seconds. Options: 4, 8, or 12."),
+    ] = DEFAULT_SECONDS,
+    size: Annotated[
+        VideoResolution,
+        Field(
+            description="Video resolution in pixels. Options: '720x1280' (vertical), '1280x720' (horizontal), '1024x1792' (tall vertical), '1792x1024' (wide horizontal)."
+        ),
+    ] = DEFAULT_RESOLUTION,
+    image_urls: Annotated[
+        list[str] | None,
+        Field(
+            description="Optional list of reference image URLs. Only the first image is used for version 2. Image dimensions should match the size parameter."
+        ),
+    ] = None,
+) -> str:
+    """Generate an AI video using Sora Version 2 (partner channel).
+
+    Version 2 offers shorter video durations (4/8/12 seconds) with
+    precise pixel-based resolution control. This is ideal for quick
+    video generation with specific resolution requirements.
+
+    Use this when:
+    - You need precise pixel resolution control (e.g., 1280x720)
+    - You want shorter videos (4, 8, or 12 seconds)
+    - You want to use the partner channel for generation
+
+    For longer videos (10-25 seconds) or character-based generation,
+    use the version 1 tools (sora_generate_video, etc.) instead.
+
+    Returns:
+        Task ID and generated video information including URLs and state.
+    """
+    payload: dict = {
+        "prompt": prompt,
+        "model": model,
+        "version": 2,
+        "duration": duration,
+        "size": size,
+    }
+
+    if image_urls:
+        payload["image_urls"] = image_urls
+
+    result = await client.generate_video(**payload)
+    return format_video_result(result)
+
+
+@mcp.tool()
+async def sora_generate_video_v2_async(
+    prompt: Annotated[
+        str,
+        Field(description="Description of the video to generate."),
+    ],
+    callback_url: Annotated[
+        str,
+        Field(
+            description="URL to receive the callback when video generation is complete. The result will be POSTed to this URL as JSON."
+        ),
+    ],
+    model: Annotated[
+        SoraModel,
+        Field(description="Sora model version."),
+    ] = DEFAULT_MODEL,
+    duration: Annotated[
+        VideoSeconds,
+        Field(description="Video duration in seconds. Options: 4, 8, or 12."),
+    ] = DEFAULT_SECONDS,
+    size: Annotated[
+        VideoResolution,
+        Field(description="Video resolution in pixels."),
+    ] = DEFAULT_RESOLUTION,
+    image_urls: Annotated[
+        list[str] | None,
+        Field(description="Optional list of reference image URLs. Only the first image is used."),
+    ] = None,
+) -> str:
+    """Generate an AI video asynchronously using Sora Version 2 with callback.
+
+    Similar to sora_generate_video_v2 but returns immediately with a task ID.
+    The result will be POSTed to your callback URL when generation completes.
+
+    Use this when:
+    - You don't want to wait for the generation to complete
+    - You have a webhook endpoint to receive results
+    - You're integrating with an async workflow
+
+    Returns:
+        Task ID that you can use to correlate with the callback.
+    """
+    payload: dict = {
+        "prompt": prompt,
+        "callback_url": callback_url,
+        "model": model,
+        "version": 2,
+        "duration": duration,
+        "size": size,
     }
 
     if image_urls:

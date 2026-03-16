@@ -24,13 +24,21 @@ class Settings:
     # Default Model
     default_model: str = field(default_factory=lambda: os.getenv("SORA_DEFAULT_MODEL", "sora-2"))
 
-    # Default Video Settings
+    # Default Video Settings (version 1)
     default_size: str = field(default_factory=lambda: os.getenv("SORA_DEFAULT_SIZE", "large"))
     default_duration: int = field(
         default_factory=lambda: int(os.getenv("SORA_DEFAULT_DURATION", "15"))
     )
     default_orientation: str = field(
         default_factory=lambda: os.getenv("SORA_DEFAULT_ORIENTATION", "landscape")
+    )
+
+    # Default Video Settings (version 2)
+    default_seconds: int = field(
+        default_factory=lambda: int(os.getenv("SORA_DEFAULT_SECONDS", "4"))
+    )
+    default_resolution: str = field(
+        default_factory=lambda: os.getenv("SORA_DEFAULT_RESOLUTION", "1280x720")
     )
 
     # Request Configuration
