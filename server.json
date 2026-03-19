@@ -1,8 +1,8 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
-  "name": "io.github.acedatacloud/mcp-sora",
+  "name": "io.github.AceDataCloud/mcp-sora",
   "description": "MCP server for OpenAI Sora AI video generation",
-  "version": "0.1.0",
+  "version": "2026.3.19.6",
   "repository": {
     "url": "https://github.com/AceDataCloud/MCPSora",
     "source": "github"
@@ -10,7 +10,7 @@
   "packages": [
     {
       "identifier": "mcp-sora",
-      "version": "0.1.0",
+      "version": "2026.3.19.6",
       "transport": {
         "type": "stdio"
       },

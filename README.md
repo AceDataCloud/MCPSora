@@ -1,6 +1,6 @@
 # MCP Sora
 
-<!-- mcp-name: io.github.acedatacloud/mcp-sora -->
+<!-- mcp-name: io.github.AceDataCloud/mcp-sora -->
 
 [![PyPI version](https://img.shields.io/pypi/v/mcp-sora.svg)](https://pypi.org/project/mcp-sora/)
 [![PyPI downloads](https://img.shields.io/pypi/dm/mcp-sora.svg)](https://pypi.org/project/mcp-sora/)
