@@ -165,7 +165,7 @@ Environment Variables:
                 async def __call__(self, scope, receive, send):  # type: ignore[no-untyped-def]
                     if scope["type"] == "http":
                         path = scope.get("path", "")
-                        if path == "/health":
+                        if path == "/health" or path.startswith("/.well-known/"):
                             await self.app(scope, receive, send)
                             return
                         headers = dict(scope.get("headers", []))
@@ -184,6 +184,30 @@ Environment Variables:
             async def health(_request: Request) -> JSONResponse:
                 return JSONResponse({"status": "ok"})
 
+            async def server_card(_request: Request) -> JSONResponse:
+                """MCP Server Card for Smithery and other registries."""
+                return JSONResponse({
+                    "serverInfo": {"name": "MCP Sora"},
+                    "authentication": {"required": True, "schemes": ["bearer"]},
+                    "tools": [
+                    {"name": "sora_generate_video", "description": "Generate video from text"},
+                    {"name": "sora_generate_video_from_image", "description": "Generate video from image"},
+                    {"name": "sora_generate_video_with_character", "description": "Generate with character reference"},
+                    {"name": "sora_generate_video_async", "description": "Generate video asynchronously"},
+                    {"name": "sora_get_task", "description": "Query task status"},
+                    {"name": "sora_get_tasks_batch", "description": "Query multiple tasks"},
+                    {"name": "sora_list_models", "description": "List available models"},
+                    {"name": "sora_list_actions", "description": "List available actions"}
+                    ],
+                    "prompts": [
+                    {"name": "sora_video_generation_guide", "description": "Guide for video generation"},
+                    {"name": "sora_workflow_examples", "description": "Example workflows"},
+                    {"name": "sora_prompt_writing_guide", "description": "Prompt writing guide"}
+                    ],
+                    "resources": [],
+                })
+
+
             @contextlib.asynccontextmanager
             async def lifespan(_app: Starlette):  # type: ignore[no-untyped-def]
                 async with mcp.session_manager.run():
@@ -196,6 +220,7 @@ Environment Variables:
             app = Starlette(
                 routes=[
                     Route("/health", health),
+                    Route("/.well-known/mcp/server-card.json", server_card),
                     Mount("/", app=mcp.streamable_http_app()),
                 ],
                 lifespan=lifespan,
