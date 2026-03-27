@@ -18,7 +18,7 @@ Generate AI videos directly from Claude, VS Code, or any MCP-compatible client.
 - **Image-to-Video** - Animate images and create videos from reference images
 - **Character Videos** - Reuse characters across different scenes
 - **Async Generation** - Webhook callbacks for production workflows
-- **Multiple Orientations** - Landscape, portrait, and square videos
+- **Multiple Orientations** - Landscape and portrait videos
 - **Task Tracking** - Monitor generation progress and retrieve results
 
 ## Quick Start
@@ -365,7 +365,6 @@ Claude: I'll create a new scene with the robot character.
 
 - `landscape` - 16:9 (YouTube, presentations)
 - `portrait` - 9:16 (TikTok, Instagram Stories)
-- `square` - 1:1 (Instagram posts)
 
 **Duration:**
 

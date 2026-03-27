@@ -52,7 +52,7 @@ async def sora_generate_video(
     orientation: Annotated[
         VideoOrientation,
         Field(
-            description="Video orientation. 'landscape' for horizontal (16:9), 'portrait' for vertical (9:16), 'square' for 1:1."
+            description="Video orientation. 'landscape' for horizontal (16:9), 'portrait' for vertical (9:16)."
         ),
     ] = DEFAULT_ORIENTATION,
 ) -> str:
@@ -118,7 +118,7 @@ async def sora_generate_video_from_image(
     ] = DEFAULT_DURATION,
     orientation: Annotated[
         VideoOrientation,
-        Field(description="Video orientation. 'landscape', 'portrait', or 'square'."),
+        Field(description="Video orientation. 'landscape', 'portrait'."),
     ] = DEFAULT_ORIENTATION,
 ) -> str:
     """Generate an AI video from reference images using Sora (Image-to-Video).
@@ -193,7 +193,7 @@ async def sora_generate_video_with_character(
     ] = DEFAULT_DURATION,
     orientation: Annotated[
         VideoOrientation,
-        Field(description="Video orientation. 'landscape', 'portrait', or 'square'."),
+        Field(description="Video orientation. 'landscape', 'portrait'."),
     ] = DEFAULT_ORIENTATION,
 ) -> str:
     """Generate an AI video featuring a character from a reference video.
