@@ -459,7 +459,7 @@ twine upload dist/*
 ## Project Structure
 
 ```
-MCPSora/
+SoraMCP/
 ├── core/                   # Core modules
 │   ├── __init__.py
 │   ├── client.py          # HTTP client for Sora API

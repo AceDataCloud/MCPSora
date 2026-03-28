@@ -24,13 +24,13 @@
     "openai sora",
     "ai video"
   ],
-  "homepage": "https://github.com/AceDataCloud/MCPSora",
+  "homepage": "https://github.com/AceDataCloud/SoraMCP",
   "repository": {
     "type": "git",
-    "url": "https://github.com/AceDataCloud/MCPSora"
+    "url": "https://github.com/AceDataCloud/SoraMCP"
   },
   "bugs": {
-    "url": "https://github.com/AceDataCloud/MCPSora/issues"
+    "url": "https://github.com/AceDataCloud/SoraMCP/issues"
   },
   "contributes": {
     "mcpServers": {
