@@ -406,8 +406,8 @@ Options:
 
 ```bash
 # Clone repository
-git clone https://github.com/AceDataCloud/mcp-sora.git
-cd mcp-sora
+git clone https://github.com/AceDataCloud/SoraMCP.git
+cd SoraMCP
 
 # Create virtual environment
 python -m venv .venv
