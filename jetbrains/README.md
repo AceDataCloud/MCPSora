@@ -58,7 +58,7 @@ Connects to the hosted MCP server at `sora.mcp.acedata.cloud`. No local install 
 - [Ace Data Cloud Platform](https://platform.acedata.cloud)
 - [API Documentation](https://docs.acedata.cloud)
 - [PyPI Package](https://pypi.org/project/mcp-sora/)
-- [Source Code](https://github.com/AceDataCloud/MCPSora)
+- [Source Code](https://github.com/AceDataCloud/SoraMCP)
 
 ## License
 

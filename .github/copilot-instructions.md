@@ -1,4 +1,4 @@
-# Copilot Instructions for MCPSora
+# Copilot Instructions for SoraMCP
 
 ## Sync from Docs
 
